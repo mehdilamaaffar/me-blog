@@ -11,8 +11,8 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ url('css/vendor.css') }}" rel="stylesheet">
-    <link href="{{ url('css/app.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/vendor.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -85,7 +85,7 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ url('js/vendor.js') }}"></script>
-    <script src="{{ url('js/app.js') }}"></script>
+    <script src="{{ secure_asset('js/vendor.js') }}"></script>
+    <script src="{{ secure_asset('js/app.js') }}"></script>
 </body>
 </html>
