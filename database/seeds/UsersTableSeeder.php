@@ -21,9 +21,5 @@ class UsersTableSeeder extends Seeder
         \DB::table('users')->insert($admin);
 
         factory(App\User::class, 5)->create();
-
-        // factory(App\User::class)->create()->each(function ($user) {
-            // $user->posts()->save(factory(App\Post::class)->make());
-        // });
     }
 }
