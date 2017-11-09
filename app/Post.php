@@ -9,9 +9,16 @@ class Post extends Model
 {
     use SoftDeletes;
 
-    protected $guarded = [
-        'id'
+    protected $fillable = [
+        'category_id',
+        'user_id',
+        'title',
+        'slug',
+        'content',
+        'meta_description',
+        'is_draft',
     ];
+
     protected $dates = ['deleted_at'];
 
     public function author()
