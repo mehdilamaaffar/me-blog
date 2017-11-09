@@ -28,7 +28,7 @@ Route::get('/category/show/{id}', 'CategoryController@show');
 Route::get('/category/{id}/posts', 'CategoryController@posts')->name('category.posts');
 
 // admin
-Route::group(['prefix' => 'admin', 'namespace' => 'admin', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function () {
     Route::get('/', 'DashboardController@index');
     Route::resource('post', 'PostsController');
 });
