@@ -7,6 +7,11 @@ trait BaseRepository
     protected $orderByColumn = "created_at";
     protected $orderByDirection = "desc";
 
+    public function create($columns)
+    {
+        return $this->model->create($columns);
+    }
+
     public function all()
     {
         return $this->model
@@ -17,14 +22,23 @@ trait BaseRepository
     public function findById($condition)
     {
         return $this->model
-            ->where(['id' => $condition])
-            ->orderBy($this->orderByColumn, $this->orderByDirection)
-            ->first();
+                    ->where(['id' => $condition])
+                    ->orderBy($this->orderByColumn, $this->orderByDirection)
+                    ->first();
+    }
+
+    public function update($id)
+    {
+        return $this->model
+                    ->find($id)
+                    ->update(request()->all());
     }
 
     public function delete($id)
     {
-        return $this->model->delete($id);
+        return $this->model
+                    ->find($id)
+                    ->delete();
     }
 
     public function softDeletes($id)
