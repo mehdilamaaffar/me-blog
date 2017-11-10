@@ -6,7 +6,9 @@
 
 @include('partials.status')
 
-<form class="form-horizontal" method="POST" action="{{ route('post.update', $post->id) }}">
+<a href="/admin/posts" class="go-back"><span class="ion-arrow-left-c"></span> Go back</a>
+
+<form class="form-horizontal" method="POST" action="{{ route('posts.update', $post->id) }}">
     {{ csrf_field() }}
 
     {{ method_field('PATCH') }}
@@ -75,11 +77,11 @@
         </div>
     </div>
 
-    <!-- Button (Double) -->
+    <!-- Button submit -->
     <div class="form-group">
         <label class="col-md-2 control-label"></label>
         <div class="col-md-8">
-            <button class="btn btn-success">Post</button>
+            <button class="btn btn-success">Update</button>
         </div>
     </div>
 

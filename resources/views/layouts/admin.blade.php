@@ -15,7 +15,6 @@
     <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-
     <div class="container">
         @include('layouts.navbar')
 
@@ -27,6 +26,9 @@
                     </div>
                     <div class="list-group-item">
                         <a href="/admin/posts">Posts</a>
+                    </div>
+                    <div class="list-group-item">
+                        <a href="/admin/categories">categories</a>
                     </div>
                 </div>
             </div>

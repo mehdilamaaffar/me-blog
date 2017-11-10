@@ -1,6 +1,11 @@
 @extends('layouts.admin')
 
 @section('content')
+
+@include('partials.errors')
+
+@include('partials.status')
+
 <h3 class="bb-1 pb-1">Posts</h3>
 <div class="bb-1 pb-1">
     <a href="{{ route('posts.create') }}"><span class="btn btn-success">Create new post!</span></a>
@@ -29,9 +34,11 @@
                 <a href="{{ route('posts.edit', $post->id) }}">
                     <span class="ion-edit" aria-hidden="true"></span>
                 </a>
-                <a href="{{ route('posts.destroy', $post->id) }}" style="float:right">
-                    <span class="ion-android-delete" aria-hidden="true"></span></a>
-                </a>
+                <form action="{{ route('posts.destroy', $post->id) }}" style="float:right" method="POST">
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
+                    <button class="ion-android-delete btn__submit"></button>
+                </form>
             </td>
         </tr>
         @endforeach

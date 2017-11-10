@@ -9,11 +9,12 @@
                 <a href="{{ 'category/' . $post->category->id . '/posts' }}">{{ $post->category->name }}</a>
             </span>
             <span class="post-date emphasize">
-                <time class="entry-date" datetime="2012-11-09T23:15:57+00:00">{{ $post->created_at->diffForHumans() }}</time>
+                <time class="entry-date" datetime="{{ $post->created_at->toDateTimeString() }}">{{ $post->created_at->diffForHumans() }}</time>
             </span>
             <span class="post-author emphasize">{{ $post->author->name }}</span>
         </div>
     </header>
+
     <div class="entry-content clearfix">
         <p>{{ $post->content_excerpt }}</p>
         <div class="read-more cl-effect-14">

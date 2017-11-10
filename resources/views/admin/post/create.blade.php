@@ -6,6 +6,8 @@
 
 @include('partials.status')
 
+<a href="/admin/posts" class="go-back"><span class="ion-arrow-left-c"></span> Go back</a>
+
 <form class="form-horizontal" method="POST" action="{{ route('post.store') }}">
     {{ csrf_field() }}
 
