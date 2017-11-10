@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\Category;
-use Illuminate\Http\Request;
 use App\Repositories\PostRepository;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -37,9 +37,9 @@ class HomeController extends Controller
         return view('post', compact('post'));
     }
 
-    public function search($key)
+    public function search(Request $request)
     {
-        $posts = $this->post->search($key);
+        $posts = $this->postRepo->search($request->keyword);
 
         return view('search', compact('posts'));
     }
