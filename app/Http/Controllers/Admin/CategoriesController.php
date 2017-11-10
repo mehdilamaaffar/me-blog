@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
+use App\Category;
 use App\Http\Controllers\Controller;
+use App\Repositories\CategoryRepository;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class CategoriesController extends Controller
 {
+    public function __construct(CategoryRepository $catRepo) {
+        $this->catRepo = $catRepo;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +21,9 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        //
+        $categories = $this->catRepo->getLatestCategories();
+
+        return view('admin.category.index', compact('categories'));
     }
 
     /**
@@ -24,7 +33,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.category.create');
     }
 
     /**
@@ -35,7 +44,16 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|min:3|max:100|unique:categories',
+            'description' => 'max:200',
+        ]);
+
+        $this->catRepo->create($request->all());
+
+        return redirect()
+               ->back()
+               ->withSuccess('The Category has been created successfuly!');
     }
 
     /**
@@ -46,7 +64,7 @@ class CategoriesController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -57,7 +75,9 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = $this->catRepo->getCategory($id);
+
+        return view('admin.category.edit', compact('category'));
     }
 
     /**
@@ -69,7 +89,21 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => [
+                'required',
+                'min:3',
+                'max:100',
+                Rule::unique('categories')->ignore($id, 'id')
+            ],
+            'description' => 'min:3|max:200',
+        ]);
+
+        $this->catRepo->update($id);
+
+        return redirect()
+               ->back()
+               ->withSuccess('The Category has been updated successfuly!');
     }
 
     /**
@@ -80,6 +114,10 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->catRepo->delete($id);
+
+        return redirect()
+               ->back()
+               ->withSuccess('The Category has been deleted successfuly!');
     }
 }
