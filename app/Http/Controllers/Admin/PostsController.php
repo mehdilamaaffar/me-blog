@@ -22,7 +22,9 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return view('admin.posts');
+        $posts = $this->postRepo->getLatestPosts();
+
+        return view('admin.post.index', compact('posts'));
     }
 
     /**
@@ -46,22 +48,24 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         $validatedRequest = $request->validate([
-            "title" => 'required|unique:posts|min:10|max:100|string|unique:posts,slug',
-            "category_id" => 'required|integer',
-            "slug" => 'required|min:10|max:100|string|unique:posts,slug',
-            "content" => 'required|min:10|max:10000|string',
-            "meta_description" => 'min:10|max:500|string',
-            "is_draft" => 'required|boolean',
+            "title"             => 'required|unique:posts|min:10|max:100|string|unique:posts,slug',
+            "category_id"       => 'required|integer',
+            "slug"              => 'required|min:10|max:100|string|unique:posts,slug',
+            "content"           => 'required|min:10|max:10000|string',
+            "meta_description"  => 'min:10|max:500|string',
+            "is_draft"          => 'required|boolean',
         ]);
 
         $data = array_merge($validatedRequest, [
-            'user_id' => Auth::user()->id,
-            'slug' => str_slug($validatedRequest['title'])
+            'user_id'   => Auth::user()->id,
+            'slug'      => str_slug($validatedRequest['title'])
         ]);
 
-        Post::create($data);
+        $this->postRepo->create($data);
 
-        return redirect()->back()->withSuccess('The post inserted successfuly!');
+        return redirect()
+               ->back()
+               ->withSuccess('The post inserted successfuly!');
     }
 
     /**
@@ -98,10 +102,7 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->postRepo
-            ->getModel()
-            ->where('id', $id)
-            ->update($request->except(['_token', '_method']));
+        $this->postRepo->update($id);
 
         return redirect()
                ->back()
@@ -116,6 +117,10 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->postRepo->delete($id);
+
+        return redirect()
+               ->back()
+               ->withSuccess('The post has been deleted successfuly!');
     }
 }
