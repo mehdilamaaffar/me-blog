@@ -39,3 +39,19 @@
 .auth-form {
     margin-top: 4em;
 }
+
+.btn__submit {
+    border:none;
+    outline:none;
+    background:none;
+    cursor:pointer;
+    padding:0;
+    text-decoration:underline;
+    font-family:inherit;
+    font-size:inherit;
+}
+
+.go-back {
+    font-size: 1.1em;
+    margin-bottom: 2em;
+}
