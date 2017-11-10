@@ -42,13 +42,11 @@ class PostRepository
      * @param string $key
      * @return Collection
      */
-    public function search()
+    public function search($key)
     {
-        $key = trim(request('keyword'));
-
         return $this->model
                     ->where('title', 'like', "%{$key}%")
                     ->orderBy('published_at', 'desc')
-                    ->get();
+                    ->paginate();
     }
 }
