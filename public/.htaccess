@@ -18,4 +18,10 @@
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    <FilesMatch "\.(ttf|otf|eot|woff)$">
+        <IfModule mod_headers.c>
+            Header set Access-Control-Allow-Origin "*"
+        </IfModule>
+    </FilesMatch>
 </IfModule>
