@@ -11,6 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
+    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
     <link href="{{ secure_asset('css/vendor.css') }}" rel="stylesheet">
     <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
 </head>
