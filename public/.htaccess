@@ -18,7 +18,4 @@
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-
-    # Referrer-Policy
-    Header always set Referrer-Policy "no-referrer"
 </IfModule>
