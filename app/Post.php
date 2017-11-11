@@ -19,7 +19,11 @@ class Post extends Model
         'is_draft',
     ];
 
-    protected $dates = ['deleted_at'];
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
 
     public function author()
     {
@@ -36,17 +40,9 @@ class Post extends Model
         return $this->hasMany(Category::class);
     }
 
-    public static function posts($where = null)
+    public function getTitleExcerptAttribute()
     {
-        if (! is_null($where)) {
-            list($column, $value) = $where;
-
-            return static::with(['author', 'category'])
-                         ->where($column, $value)
-                         ->paginate(5);
-        }
-
-        return static::with(['author', 'category'])->paginate(5);
+        return str_limit($this->title, 300);
     }
 
     public function getContentExcerptAttribute()
