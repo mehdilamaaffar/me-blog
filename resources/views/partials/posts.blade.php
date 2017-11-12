@@ -6,7 +6,7 @@
         </h1>
         <div class="entry-meta">
             <span class="post-category emphasize">
-                <a href="{{ 'category/' . $post->category->id . '/posts' }}">{{ $post->category->name }}</a>
+                <a href="{{ '/category/' . $post->category->id . '/posts' }}">{{ $post->category->name }}</a>
             </span>
             <span class="post-date emphasize">
                 <time class="entry-date" datetime="{{ $post->created_at->toDateTimeString() }}">{{ $post->created_at->diffForHumans() }}</time>

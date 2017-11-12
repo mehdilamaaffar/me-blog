@@ -26,4 +26,13 @@ class CategoryRepository
                     ->latest()
                     ->paginate($items);
     }
+
+    public function getLatestCategoryPosts($id, $items = 5)
+    {
+        return $this->model
+                    ->find($id)
+                    ->posts()
+                    ->latest()
+                    ->paginate($items);
+    }
 }
