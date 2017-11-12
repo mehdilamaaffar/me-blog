@@ -29,5 +29,3 @@ mix
   .options({
     processCssUrls: false,
   })
-  .browserSync('localhost:8000')
-  // .browserSync('app.dev')
