@@ -7,15 +7,17 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class PostsTest extends TestCase
 {
-    /**
-     * A basic test example.
-     * @test
-     * @return void
-     */
-    public function it_return_all_posts()
+    /** @test */
+    public function see_home_page()
     {
-        $response = $this->visit('/');
+        $this->visit('/')
+             ->see('home');
+    }
 
-        $response->assertResponseOk();
+    /** @test */
+    public function see_search_page()
+    {
+        $this->visit('/search')
+             ->see('home');
     }
 }
