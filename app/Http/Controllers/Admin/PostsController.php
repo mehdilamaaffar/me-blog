@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Post;
 use App\Category;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use App\Repositories\PostRepository;
+use App\Http\Controllers\Controller;
+use Faker\Factory;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
@@ -47,6 +48,14 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+        // check if the user provide a new category.
+        if (! is_null($request->category_name) || is_null($request->category_id)) {
+            $categoryId = Category::firstOrCreate(['name' => $request->category_name])->id;
+            $request->merge(['category_id' => $categoryId]);
+        }
+
+        return $request;
+
         $validatedRequest = $request->validate([
             "title"             => 'required|unique:posts|min:10|max:100|string|unique:posts,slug',
             "category_id"       => 'required|integer',

@@ -29,9 +29,11 @@
                 <a href="{{ route('posts.edit', $post->id) }}">
                     <span class="ion-edit" aria-hidden="true"></span>
                 </a>
-                <a href="{{ route('posts.destroy', $post->id) }}" style="float:right">
-                    <span class="ion-android-delete" aria-hidden="true"></span></a>
-                </a>
+                <form action="{{ route('posts.destroy', $post->id) }}" style="float:right" method="POST">
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
+                    <button class="ion-android-delete btn__submit"></button>
+                </form>
             </td>
         </tr>
         @endforeach
