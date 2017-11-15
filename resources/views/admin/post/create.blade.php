@@ -28,11 +28,18 @@
     <div class="form-group">
         <label class="col-md-2 control-label" for="category">category</label>
         <div class="col-md-9">
-            <select name="category_id" class="form-control">
+            <select name="category_id" class="form-control" id="categorySelect">
             @foreach($categories as $category)
                 <option value="{{ $category->id }}">{{ $category->name }}</option>
             @endforeach
             </select>
+
+            <div>
+                <a id="addNewCategory" href="#addNewCategory">add new category</a>
+                <a id="returnCategoriesList" href="#returnCategoriesList">Return previous list</a>
+
+                <input id="categoryNameInput" name="category_name" value="{{ old('slug') }}" type="text" placeholder="category name" class="form-control">
+            </div>
         </div>
     </div>
 
@@ -100,5 +107,39 @@
 
         titleSlugId.value = formatedtitleSlug;
     }
+</script>
+
+<script>
+    var categorySelect = document.getElementById('categorySelect');
+    var categoryNameInput = document.getElementById('categoryNameInput');
+    categoryNameInput.style.display = 'none';
+
+    var addNewCategory = document.getElementById('addNewCategory');
+    var returnCategoriesList = document.getElementById('returnCategoriesList');
+    returnCategoriesList.style.display = 'none';
+
+    lastSelectedCategoryId =  document.getElementById('categorySelect').options[categorySelect.selectedIndex].value;
+
+    addNewCategory.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        categorySelect.style.display = 'none';
+        categorySelect.options[categorySelect.selectedIndex].value = null;
+
+        addNewCategory.style.display = 'none';
+        returnCategoriesList.style.display = 'inline';
+
+        categoryNameInput.style.display = 'inline';
+    });
+
+    returnCategoriesList.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        addNewCategory.style.display = 'inline';
+        categoryNameInput.style.display = 'none';
+
+        categorySelect.style.display = 'inline';
+        returnCategoriesList.style.display = 'none';
+    });
 </script>
 @endpush
