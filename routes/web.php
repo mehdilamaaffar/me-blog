@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\URL;
 |
 */
 
-URL::forceSchema('https');
+URL::forceScheme('https');
 
 Auth::routes();
 
