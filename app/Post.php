@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
@@ -38,6 +39,11 @@ class Post extends Model
     public function categories()
     {
         return $this->hasMany(Category::class);
+    }
+
+    public function scopePublished(Builder $query)
+    {
+        return $query->where('draft', false);
     }
 
     public function getTitleExcerptAttribute()
