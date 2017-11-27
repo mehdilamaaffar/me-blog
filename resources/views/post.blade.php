@@ -8,9 +8,9 @@
             <div class="entry-meta">
                 <span class="post-category"><a href="{{ '/category/' . $post->category->id . '/posts' }}">{{ $post->category->name }}</a></span>
                 <span class="post-date">
-                    <a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">{{ $post->category->name }}</time></a>
+                    <time class="entry-date" datetime="{{ $post->created_at->toDateTimeString() }}">{{ $post->created_at->diffForHumans() }}</time>
                 </span>
-                <span class="post-author"><a href="#">{{ $post->author->name }}</a></span>
+                <span class="post-author">{{ $post->author->name }}</span>
             </div>
         </header>
         <div class="entry-content clearfix">

@@ -1,13 +1,16 @@
 @extends('layouts.app')
 
-{{ $aside = false}}
-
 @section('content')
+
+@include('partials.status')
+
 <main class="col-md-12">
     <h1 class="page-title">Contact</h1>
     <article class="post bb-n">
         <div class="entry-content clearfix">
-            <form action="#" method="post" class="contact-form">
+            <form action="/contact/store" method="post" class="contact-form">
+                {{ csrf_field() }}
+
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3">
                         <input type="text" name="name" placeholder="Name" required>
