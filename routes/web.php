@@ -18,6 +18,9 @@ Route::redirect('/', '/home');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::view('/about', 'about');
 Route::view('/contact', 'contact');
+Route::post('/contact/store', function () {
+    return redirect()->back()->withSuccess('You message has been sent succesfuly.');
+});
 Route::get('/search', 'HomeController@search');
 
 # Posts
