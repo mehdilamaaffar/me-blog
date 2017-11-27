@@ -36,3 +36,12 @@ $factory->define(App\Post::class, function (Faker $faker) {
         'published_at' => $faker->date,
     ];
 });
+
+$factory->state('App\Post', 'test', [
+    'category_id' => function () {
+            return factory('App\Category')->create()->id;
+    },
+    'user_id' => function () {
+        return factory('App\User')->create()->id;
+    }
+]);
