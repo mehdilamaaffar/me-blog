@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\URL;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,6 +12,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+URL::forceScheme('https');
 
 Auth::routes();
 
