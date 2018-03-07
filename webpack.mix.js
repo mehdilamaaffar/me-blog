@@ -22,7 +22,6 @@ mix
     'resources/assets/vendor/js/script.js',
   ], 'public/js/vendor.js')
   .styles([
-    // 'resources/assets/vendor/css/bootstrap.min.css',
     'resources/assets/vendor/css/ionicons.min.css',
     'resources/assets/vendor/css/pace.css',
   ], 'public/css/vendor.css')
