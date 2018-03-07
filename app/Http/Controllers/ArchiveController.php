@@ -12,9 +12,9 @@ class ArchiveController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Archive $archives)
     {
-        $archives = Archive::all();
+        $archives->all();
     }
 
     /**
