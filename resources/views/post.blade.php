@@ -20,11 +20,6 @@
 
         <div class="entry-content clearfix">
             <p>{{ $post->content_excerpt }}</p>
-            <div class="read-more cl-effect-14">
-                <a href="{{ route('single.post.show', $post->slug) }}" class="more-link">
-                    Continue reading <span class="meta-nav">â†’</span>
-                </a>
-            </div>
         </div>
     </article>
 </main>

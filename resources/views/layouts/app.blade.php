@@ -20,7 +20,7 @@
             <div class="row">
                 <div class="col-md-4 col-sm-5 col-xs-8">
                     <div class="logo">
-                        <h1><a href="/" class="logo__text">{{ config('blog.name') }}</a></h1>
+                        <h1><a href="/" class="logo__text" data-hover="{{ config('blog.name') }}">{{ config('blog.name') }}</a></h1>
                     </div>
                 </div><!-- col-md-4 -->
 
