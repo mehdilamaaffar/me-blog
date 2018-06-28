@@ -11,81 +11,31 @@
     <title>{{ config('blog.name', 'Blog')  . config('blog.description') }}</title>
 
     <!-- Styles -->
-    <link href="{{ secure_asset('css/vendor.css') }}" rel="stylesheet">
     <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
-    <div class="container">
-        <header class="header">
-            <div class="row">
-                <div class="col-md-4 col-sm-5 col-xs-8">
-                    <div class="logo">
-                        <h1><a href="/" class="logo__text" data-hover="{{ config('blog.name') }}">{{ config('blog.name') }}</a></h1>
-                    </div>
-                </div><!-- col-md-4 -->
-
-                <div class="col-md-8 col-sm-7 col-xs-4">
-                    <nav class="main-nav" role="navigation">
-                        <div class="navbar-header">
-                            <button type="button" id="trigger-overlay" class="navbar-toggle">
-                                <span class="ion-navicon"></span>
-                            </button>
-                        </div>
-
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav navbar-right">
-                                <li class="cl-effect-11"><a href="/about" class="main-nav__link" data-hover="About">About</a></li>
-                                <li class="cl-effect-11"><a href="/contact" class="main-nav__link" data-hover="Contact">Contact</a></li>
-                            </ul>
-                        </div><!-- /.navbar-collapse -->
-                    </nav>
-
-                    <div id="header-search-box">
-                        <a id="search-menu" href="#"><span id="search-icon" class="ion-ios-search-strong"></span></a>
-                        <div id="search-form" class="search-form">
-                            <form role="search" method="get" id="searchform" action="/search">
-                                <input type="search" name="keyword" placeholder="Search" required>
-                                <button type="submit"><span class="ion-ios-search-strong"></span></button>
-                            </form>
-                        </div>
-                    </div>
-                </div><!-- col-md-8 -->
-            </div>
-        </header>
-    </div>
-
-    <div class="content-body">
-        <div class="container">
-            <div class="row">
-                @yield('content')
+<body class="bg-grey-lightest border-indigo-dark border-t-4 leading-normal">
+    <header class="flex flex-col">
+        <img class="border-8 border-white block h-48 w-48 rounded-full mx-auto my-4 relative" src="/img/me.jpg">
+        <div class="bg-grey-light p-12 md:p-24 -mt-16">
+            <h2 class="text-center mt-2">Mehdi Lamaaffar</h2>
+            <div class="mx-auto w-100 md:w-3/5 mt-2">
+                <p>Hi! I'm Mehdi Lamaaffar. I Laravel developer, I am a dedicated web developer with a passion for creating modern, eye catching websites.</p>
+                <p>I am someone who always has an eye on my target. I endeavor to deliver high-quality work on time, every time.</p>
+                <p>Find me as mehdii.lamaaffar @twitter and @github and Lamaaffar.mehdi @instagram.</p>
             </div>
         </div>
-    </div>
+    </header>
 
-    <footer id="site-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <p class="copyright">&copy; 2017 All right reserved</p>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <div class="container md:mx-auto md:w-2/2 lg:w-1/2 p-4">
 
-    <!-- Mobile Menu -->
-    <div class="overlay overlay-hugeinc">
-        <button type="button" class="overlay-close"><span class="ion-ios-close-empty"></span></button>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-        </nav>
+        @yield('content')
+
+        <footer class="text-base text-center text-grey-darker tracking-wide p-16">
+            &copy; 2017 All right reserved
+        </footer>
     </div>
 
     <!-- Scripts -->
-    <script src="{{ secure_asset('js/vendor.js') }}"></script>
     <script src="{{ secure_asset('js/app.js') }}"></script>
 </body>
 </html>

@@ -25,7 +25,7 @@ class PostRepository
         return $this->model
                     ->with('category')
                     ->latest()
-                    ->paginate($items);
+                    ->simplePaginate($items);
     }
 
     public function getPostBySlug($slug)
