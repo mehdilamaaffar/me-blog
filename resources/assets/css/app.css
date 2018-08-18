@@ -36,6 +36,8 @@
  * @import "components/forms";
  */
 
+@import "./links.css";
+
 /**
  * This injects all of Tailwind's utility classes, generated based on your
  * config file.

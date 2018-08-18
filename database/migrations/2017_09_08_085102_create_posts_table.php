@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
         $table->integer('user_id')->unsigned();
         $table->string('slug')->unique();
         $table->string('title');
+        $table->string('teaser');
         $table->text('content');
         $table->string('meta_description')->nullable();
         $table->boolean('is_draft')->default(false);

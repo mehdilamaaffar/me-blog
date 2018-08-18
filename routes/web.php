@@ -13,8 +13,6 @@ use Illuminate\Support\Facades\URL;
 |
 */
 
-URL::forceScheme('https');
-
 Auth::routes();
 
 # Basic pages

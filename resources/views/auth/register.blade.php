@@ -1,81 +1,67 @@
 @extends('layouts.auth')
 
 @section('title')
-Register Page
+    Register Page
 @endsection
 
 @section('content')
-<div class="container">
-    <div class="row auth-form">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+    <div class="w-full pt-10">
+        <form class="w-1/4 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mx-auto border-blue border-t-8" method="POST" action="{{ route('register') }}">
+            {{ csrf_field() }}
 
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
-                        {{ csrf_field() }}
+            <div class="mb-4">
+                <p class="block text-grey-darkest text-md font-bold mb-4">
+                    Register Form
+                </p>
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                <label class="block text-grey-darker text-sm font-bold mb-2" for="Name">
+                    Name
+                </label>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 mb-3 text-grey-darker leading-tight{{ $errors->has('name') ? 'border-red' : '' }}" type="text" name="name" value="{{ old('name') }}" required autofocus>
 
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                @if ($errors->has('name'))
+                    <p class="text-red text-xs italic">{{ $errors->first('name') }}</p>
+                @endif
             </div>
-        </div>
+
+            <div class="mb-4">
+                <label class="block text-grey-darker text-sm font-bold mb-2" for="Email">
+                    Email
+                </label>
+
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 mb-3 text-grey-darker leading-tight{{ $errors->has('email') ? 'border-red' : '' }}" type="email" name="email" value="{{ old('email') }}" required autofocus>
+
+                @if ($errors->has('email'))
+                    <p class="text-red text-xs italic">{{ $errors->first('email') }}</p>
+                @endif
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-grey-darker text-sm font-bold mb-2" for="password">
+                    Password
+                </label>
+
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-3 leading-tight{{ $errors->has('password') ? ' border-red' : '' }}" type="password" name="password" required>
+
+                @if ($errors->has('password'))
+                    <p class="text-red text-xs italic">{{ $errors->first('password') }}</p>
+                @endif
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-grey-darker text-sm font-bold mb-2" for="password-confirm">
+                    Confirm Password
+                </label>
+
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-3 leading-tight" type="password" name="password_confirmation" required>
+            </div>
+
+            <div class="flex items-center justify-between">
+                <button class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded" type="submit">
+                    Register
+                </button>
+            </div>
+        </form>
     </div>
-</div>
 @endsection

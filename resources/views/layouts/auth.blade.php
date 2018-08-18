@@ -11,10 +11,10 @@
     <title>@yield('title', config('app.name'))</title>
 
     <!-- Styles -->
-    <link href="{{ secure_asset('css/vendor.css') }}" rel="stylesheet">
     <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body class="bg-grey-lighter">
     @yield('content')
+    @stack('scripts')
 </body>
 </html>
