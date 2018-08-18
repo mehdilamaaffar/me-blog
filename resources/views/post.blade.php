@@ -2,7 +2,7 @@
 
 @section('content')
 
-<article class="-mt-10 bg-white mb-16 border-grey-lighter shadow border-2 relative p-8">
+<article class="-mt-10 bg-white mb-16 border-grey-lighter shadow border-2 relative p-8" id="post">
     <time datetime="{{ $post->created_at->toDateTimeString() }}" class="text-sm text-grey">
         {{ $post->created_at->diffForHumans() }}
     </time>

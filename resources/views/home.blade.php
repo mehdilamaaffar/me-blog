@@ -7,9 +7,9 @@
     <time datetime="{{ $post->created_at->toDateTimeString() }}" class="text-sm text-grey">
         {{ $post->created_at->diffForHumans() }}
     </time>
-    <a class="block text-2xl text-grey-darkest pb-1 no-underline" href="{{ route('single.post.show', $post->slug) }}">{{ $post->title }}</a>
+    <a class="block text-2xl text-grey-darkest pb-1 no-underline" href="{{ route('single.post.show', $post->slug) }}#post">{{ $post->title }}</a>
     <p class="text-base text-grey-darker pb-2">{{ $post->content_excerpt }}</p>
-    <a href="{{ route('single.post.show', $post->slug) }}" class="text-base text-blue-light no-underline">Read more</a>
+    <a href="{{ route('single.post.show', $post->slug) }}#post" class="text-base text-blue-light no-underline">Read more</a>
 </article>
 @endforeach
 

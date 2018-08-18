@@ -16,6 +16,8 @@ use Illuminate\Support\Str;
 
 $factory->define(App\Post::class, function (Faker $faker) {
     $name = $faker->name;
+    $content = $faker->realText(rand(500, 5000));
+
     return [
         'category_id' => function () {
             $cat = new App\Category;
@@ -29,7 +31,8 @@ $factory->define(App\Post::class, function (Faker $faker) {
         },
         'title' => $name,
         'slug' => Str::slug($name),
-        'content' => $faker->paragraph,
+        'teaser' => str_limit($content, 200),
+        'content' => $content,
         'meta_description' => $faker->sentence,
         'is_draft' => rand(0, 1),
         'view_count' => rand(100, 400),
